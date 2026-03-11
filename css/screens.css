@@ -1,0 +1,414 @@
+/* ============================================================
+   screens.css — أنماط خاصة بكل شاشة
+   ============================================================ */
+
+/* ============================================================
+   1. شاشة تسجيل الدخول (Login)
+   ============================================================ */
+#screen-login {
+  background: var(--color-white);
+}
+
+.login-logo-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px var(--spacing-md) var(--spacing-lg);
+}
+
+.login-logo {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, var(--color-primary), #2D5E8E);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--spacing-md);
+  box-shadow: 0 8px 24px rgba(27, 58, 92, 0.25);
+}
+
+.login-logo i {
+  font-size: 38px;
+  color: var(--color-accent);
+}
+
+.login-app-name {
+  font-size: var(--font-size-xl);
+  font-weight: 800;
+  color: var(--color-primary);
+}
+
+.login-subtitle {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin-top: 2px;
+}
+
+.login-form-section {
+  padding: 0 var(--spacing-md);
+}
+
+.login-title {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 4px;
+}
+
+.login-welcome {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-lg);
+}
+
+.forgot-password {
+  text-align: start;
+  padding: 4px 0 var(--spacing-md);
+  font-size: var(--font-size-sm);
+  color: var(--color-accent);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.register-link {
+  text-align: center;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  padding: var(--spacing-sm) 0;
+}
+
+.register-link a {
+  color: var(--color-accent);
+  font-weight: 700;
+}
+
+.login-footer {
+  padding: var(--spacing-md);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ============================================================
+   2. شاشة التسجيل - الخطوة 1 (Registration)
+   ============================================================ */
+.name-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+}
+
+.name-grid .form-group {
+  margin-bottom: 0;
+}
+
+/* ============================================================
+   3. شاشة تفعيل الحساب (Activation)
+   ============================================================ */
+.upload-grid {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-sm);
+}
+
+/* ============================================================
+   4. الصفحة الرئيسية (Home)
+   ============================================================ */
+#screen-home {
+  background: var(--color-white);
+}
+
+.home-section-header {
+  padding: var(--spacing-md) var(--spacing-md) var(--spacing-sm);
+  font-size: var(--font-size-base);
+  font-weight: 700;
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.home-section-header .see-all {
+  font-size: var(--font-size-xs);
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+.empty-transactions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xl);
+  gap: var(--spacing-sm);
+}
+
+.empty-transactions .empty-icon {
+  font-size: 48px;
+  color: var(--color-border);
+}
+
+.empty-transactions .empty-text {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  text-align: center;
+}
+
+/* ============================================================
+   5. القائمة الجانبية (Drawer)
+   ============================================================ */
+/* styles already in components.css */
+
+/* ============================================================
+   6. بيانات الحساب (Account Details)
+   ============================================================ */
+#screen-account .profile-top {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.completion-card {
+  margin: var(--spacing-md);
+  background: var(--color-accent-bg);
+  border: 1px solid var(--color-accent-light);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-md);
+}
+
+.completion-card .completion-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-sm);
+}
+
+.completion-card .completion-title {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.completion-card .completion-count {
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--color-accent);
+}
+
+/* ============================================================
+   7. الحماية (Security)
+   ============================================================ */
+#screen-security .security-section-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: var(--spacing-md) var(--spacing-md) var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+#screen-security .security-section-title .info-icon {
+  color: var(--color-accent);
+  font-size: 16px;
+}
+
+/* ============================================================
+   9. حذف الحساب (Delete Account)
+   ============================================================ */
+#screen-delete-account .delete-section-title {
+  padding: var(--spacing-md) var(--spacing-md) var(--spacing-sm);
+  font-size: var(--font-size-base);
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+/* ============================================================
+   10. دعوة صديق (Invite Friend)
+   ============================================================ */
+.invite-banner {
+  background: linear-gradient(135deg, var(--color-accent), #C85E1C);
+  padding: var(--spacing-lg) var(--spacing-md);
+  display: flex;
+  gap: var(--spacing-md);
+  align-items: center;
+}
+
+.invite-banner .invite-icon {
+  font-size: 48px;
+  color: rgba(255,255,255,0.85);
+  flex-shrink: 0;
+}
+
+.invite-banner .invite-text .invite-title {
+  font-size: var(--font-size-md);
+  font-weight: 700;
+  color: var(--color-white);
+  margin-bottom: 4px;
+}
+
+.invite-banner .invite-text .invite-desc {
+  font-size: var(--font-size-xs);
+  color: rgba(255,255,255,0.8);
+  line-height: 1.6;
+}
+
+/* ============================================================
+   11. السقوف (Limits)
+   ============================================================ */
+.limits-card {
+  margin: var(--spacing-md);
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+.limit-section {
+  padding: var(--spacing-md);
+}
+
+.limit-section + .limit-section {
+  border-top: 1px solid var(--color-border);
+}
+
+.limit-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-sm);
+}
+
+.limit-title {
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.limit-values {
+  display: flex;
+  justify-content: space-between;
+  margin-top: var(--spacing-sm);
+}
+
+.limit-value-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.limit-value-label {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+.limit-value-amount {
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+/* ============================================================
+   13. تحويل لعميل (Transfer to Client)
+   ============================================================ */
+.qr-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--font-size-sm);
+  color: var(--color-accent);
+  cursor: pointer;
+}
+
+/* ============================================================
+   14. المصارفة (Exchange)
+   ============================================================ */
+.exchange-amount-label {
+  padding: var(--spacing-sm) var(--spacing-md) var(--spacing-xs);
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.exchange-rate-title {
+  padding: var(--spacing-sm) var(--spacing-md) var(--spacing-xs);
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+/* ============================================================
+   أنماط مشتركة لشاشات النماذج
+   ============================================================ */
+.form-screen-content {
+  padding: var(--spacing-md);
+}
+
+/* ============================================================
+   أنماط شاشة الـ Bottom Sheet (Transfer Options)
+   ============================================================ */
+.transfer-sheet-backdrop {
+  position: fixed;
+  inset: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: var(--screen-width);
+  background: rgba(0,0,0,0.45);
+  z-index: 150;
+  display: none;
+}
+
+.transfer-sheet-backdrop.active {
+  display: block;
+}
+
+/* ============================================================
+   مؤشرات تجربة المستخدم
+   ============================================================ */
+.screen-nav-hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px;
+  background: var(--color-primary);
+  color: rgba(255,255,255,0.8);
+  font-size: var(--font-size-xs);
+}
+
+/* ============================================================
+   شاشة اختيار تنقل (Navigation Demo Bar)
+   ============================================================ */
+.demo-nav {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: var(--screen-width);
+  background: var(--color-primary);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 8px;
+  z-index: 400;
+}
+
+.demo-nav button {
+  padding: 4px 8px;
+  background: rgba(255,255,255,0.15);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 10px;
+  cursor: pointer;
+  font-family: var(--font-family);
+  transition: background 0.2s;
+}
+
+.demo-nav button:hover {
+  background: rgba(255,255,255,0.3);
+}
+
+.demo-nav button.active {
+  background: var(--color-accent);
+}
