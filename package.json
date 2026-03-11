@@ -1,0 +1,10 @@
+{
+  "name": "wallet-ui-design",
+  "version": "1.0.0",
+  "description": "تصميم واجهة تطبيق محفظة مالية — مرجع بصري لـ Flutter",
+  "scripts": {
+    "start": "npx serve . --listen 3000 --single"
+  },
+  "keywords": ["wallet", "ui", "design", "arabic", "rtl", "flutter"],
+  "license": "MIT"
+}
