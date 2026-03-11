@@ -1,0 +1,1532 @@
+/* ============================================================
+   components.css — أنماط العناصر المشتركة
+   الأزرار، حقول الإدخال، البطاقات، الهيدر، إلخ
+   ============================================================ */
+
+/* ============================================================
+   الهيدر (Header)
+   ============================================================ */
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-height);
+  padding: 0 var(--spacing-md);
+  background: var(--color-accent);
+  color: var(--color-white);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  flex-shrink: 0;
+}
+
+.app-header .header-title {
+  font-size: var(--font-size-md);
+  font-weight: 700;
+  color: var(--color-white);
+  flex: 1;
+  text-align: center;
+}
+
+.app-header .header-action {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--color-white);
+  font-size: 20px;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+
+.app-header .header-action:active {
+  background: rgba(255,255,255,0.15);
+}
+
+/* الهيدر الرئيسي (Home) */
+.home-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-height);
+  padding: 0 var(--spacing-md);
+  background: var(--color-white);
+  border-bottom: 1px solid var(--color-border);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  flex-shrink: 0;
+}
+
+.home-header .header-logo {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--color-accent);
+}
+
+.home-header .header-logo span {
+  color: var(--color-primary);
+}
+
+.home-header .header-icons {
+  display: flex;
+  gap: 4px;
+}
+
+.home-header .header-icon-btn {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--color-primary);
+  font-size: 20px;
+  border-radius: 50%;
+  position: relative;
+}
+
+/* ============================================================
+   الأزرار (Buttons)
+   ============================================================ */
+
+/* زر رئيسي برتقالي */
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 14px var(--spacing-lg);
+  border-radius: var(--border-radius);
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--color-accent);
+  color: var(--color-white);
+}
+
+.btn-primary:hover {
+  background: #d4661f;
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+/* زر غير مفعّل */
+.btn-disabled,
+.btn:disabled {
+  background: var(--color-accent-light);
+  color: var(--color-white);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* زر ثانوي */
+.btn-secondary {
+  background: var(--color-bg-secondary);
+  color: var(--color-primary);
+  border: 1px solid var(--color-border);
+}
+
+/* زر الخروج */
+.btn-logout {
+  background: var(--color-accent);
+  color: var(--color-white);
+}
+
+/* زر صغير */
+.btn-sm {
+  padding: 8px 16px;
+  font-size: var(--font-size-sm);
+  border-radius: var(--border-radius-sm);
+  width: auto;
+}
+
+/* زر دائري */
+.btn-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ============================================================
+   حقول الإدخال (Input Fields)
+   ============================================================ */
+.form-group {
+  margin-bottom: var(--spacing-md);
+}
+
+.form-label {
+  display: block;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 6px;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.form-input {
+  width: 100%;
+  height: 48px;
+  padding: 0 44px 0 var(--spacing-md);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--border-radius-sm);
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  color: var(--color-text-main);
+  background: var(--color-white);
+  outline: none;
+  transition: border-color 0.2s;
+  direction: inherit;
+}
+
+/* في LTR نعكس الحشو */
+[dir="ltr"] .form-input {
+  padding: 0 var(--spacing-md) 0 44px;
+}
+
+.form-input::placeholder {
+  color: var(--color-text-light);
+  font-size: var(--font-size-sm);
+}
+
+.form-input:focus {
+  border-color: var(--color-accent);
+}
+
+/* حقل مفعّل بإطار برتقالي */
+.form-input.active-input {
+  border-color: var(--color-accent);
+}
+
+/* أيقونة داخل الحقل (يمين) */
+.input-icon {
+  position: absolute;
+  right: 12px;
+  color: var(--color-text-secondary);
+  font-size: 18px;
+  pointer-events: none;
+}
+
+[dir="ltr"] .input-icon {
+  right: auto;
+  left: 12px;
+}
+
+/* أيقونة قابلة للنقر */
+.input-icon.clickable {
+  pointer-events: all;
+  cursor: pointer;
+}
+
+/* dropdown */
+.form-select {
+  width: 100%;
+  height: 48px;
+  padding: 0 44px 0 var(--spacing-md);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--border-radius-sm);
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  color: var(--color-text-main);
+  background: var(--color-white);
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  direction: inherit;
+}
+
+[dir="ltr"] .form-select {
+  padding: 0 var(--spacing-md) 0 44px;
+}
+
+.form-select:focus {
+  border-color: var(--color-accent);
+}
+
+/* سهم dropdown */
+.select-arrow {
+  position: absolute;
+  left: 12px;
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  pointer-events: none;
+}
+
+[dir="ltr"] .select-arrow {
+  left: auto;
+  right: 12px;
+}
+
+/* ============================================================
+   البطاقات (Cards)
+   ============================================================ */
+.card {
+  background: var(--color-white);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+}
+
+.card-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px var(--spacing-md);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.card-item:active {
+  background: var(--color-bg-secondary);
+}
+
+.card-item .item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.card-item .item-title {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.card-item .item-subtitle {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+.card-item .item-value {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.card-item .item-arrow {
+  color: var(--color-text-light);
+  font-size: 14px;
+}
+
+[dir="rtl"] .card-item .item-arrow {
+  transform: rotate(180deg);
+}
+
+/* ============================================================
+   Toggle Switch
+   ============================================================ */
+.toggle-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.toggle {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.toggle-slider {
+  position: absolute;
+  inset: 0;
+  background: var(--color-border);
+  border-radius: 12px;
+  transition: background 0.3s;
+  cursor: pointer;
+}
+
+.toggle-slider::before {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  left: 3px;
+  top: 3px;
+  background: var(--color-white);
+  border-radius: 50%;
+  transition: transform 0.3s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.toggle input:checked + .toggle-slider {
+  background: var(--color-accent);
+}
+
+.toggle input:checked + .toggle-slider::before {
+  transform: translateX(20px);
+}
+
+/* ============================================================
+   Checkbox
+   ============================================================ */
+.checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.checkbox-wrapper input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--color-border);
+  border-radius: 4px;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.checkbox-wrapper input[type="checkbox"]:checked {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.checkbox-wrapper input[type="checkbox"]:checked::after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 2px;
+  width: 6px;
+  height: 11px;
+  border: 2px solid white;
+  border-top: none;
+  transform: rotate(45deg);
+}
+
+.checkbox-wrapper .checkbox-label {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-main);
+}
+
+.checkbox-wrapper .checkbox-label a {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+/* ============================================================
+   شريط التقدم (Progress Bar)
+   ============================================================ */
+.progress-bar {
+  width: 100%;
+  height: 6px;
+  background: var(--color-border);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 3px;
+  background: var(--color-accent);
+  transition: width 0.4s ease;
+}
+
+.progress-fill.green {
+  background: var(--color-success);
+}
+
+/* ============================================================
+   Stepper (خطوات التسجيل)
+   ============================================================ */
+.stepper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-md) var(--spacing-lg);
+  gap: 0;
+}
+
+.stepper .step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  position: relative;
+}
+
+.stepper .step-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-border);
+  color: var(--color-text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  z-index: 1;
+}
+
+.stepper .step.active .step-circle {
+  background: var(--color-accent);
+  color: var(--color-white);
+}
+
+.stepper .step.done .step-circle {
+  background: var(--color-success);
+  color: var(--color-white);
+}
+
+.stepper .step-label {
+  font-size: 10px;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+.stepper .step.active .step-label {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+.stepper .step-line {
+  flex: 1;
+  height: 2px;
+  background: var(--color-border);
+  margin-bottom: 16px;
+  min-width: 40px;
+}
+
+.stepper .step-line.done {
+  background: var(--color-success);
+}
+
+/* ============================================================
+   الأزرار الراديو (Radio Buttons) - اختيار الجنس
+   ============================================================ */
+.radio-group {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.radio-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  transition: all 0.2s;
+  background: var(--color-white);
+}
+
+.radio-btn.selected {
+  border-color: var(--color-accent);
+  background: var(--color-accent-bg);
+  color: var(--color-accent);
+}
+
+/* ============================================================
+   بطاقة الرصيد (Balance Card)
+   ============================================================ */
+.balance-card {
+  margin: var(--spacing-md);
+  background: linear-gradient(135deg, #FDE8D8 0%, #FFD4BA 50%, #FDE8D8 100%);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-lg);
+  position: relative;
+  overflow: hidden;
+  min-height: 130px;
+}
+
+.balance-card::before {
+  content: '';
+  position: absolute;
+  top: -30px;
+  left: -30px;
+  width: 120px;
+  height: 120px;
+  background: rgba(232, 114, 42, 0.1);
+  border-radius: 50%;
+}
+
+.balance-card::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  width: 100px;
+  height: 100px;
+  background: rgba(232, 114, 42, 0.08);
+  border-radius: 50%;
+}
+
+.balance-card .balance-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-sm);
+  position: relative;
+  z-index: 1;
+}
+
+.balance-card .balance-label {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-primary);
+  opacity: 0.8;
+}
+
+.balance-card .balance-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--color-accent);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 20px;
+}
+
+.balance-card .balance-amount {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--color-primary);
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.balance-card .balance-eye {
+  font-size: 18px;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+}
+
+/* ============================================================
+   شبكة الخدمات (Services Grid)
+   ============================================================ */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-sm);
+  padding: 0 var(--spacing-md);
+}
+
+.service-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 14px var(--spacing-sm);
+  background: var(--color-bg-secondary);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.service-item:active {
+  transform: scale(0.96);
+  background: var(--color-accent-bg);
+}
+
+.service-item .service-icon {
+  width: 44px;
+  height: 44px;
+  background: var(--color-accent-bg);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-accent);
+  font-size: 22px;
+}
+
+.service-item .service-name {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--color-primary);
+  line-height: 1.3;
+}
+
+/* ============================================================
+   Bottom Sheet
+   ============================================================ */
+.bottom-sheet {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: var(--screen-width);
+  background: var(--color-white);
+  border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+  padding: 0 0 var(--spacing-lg);
+  z-index: 200;
+  box-shadow: 0 -4px 24px rgba(0,0,0,0.15);
+  animation: slideUp 0.3s ease;
+}
+
+.bottom-sheet.active {
+  display: block;
+}
+
+@keyframes slideUp {
+  from { transform: translateX(-50%) translateY(100%); }
+  to   { transform: translateX(-50%) translateY(0); }
+}
+
+.bottom-sheet .sheet-handle {
+  width: 40px;
+  height: 4px;
+  background: var(--color-border);
+  border-radius: 2px;
+  margin: 12px auto 8px;
+}
+
+.bottom-sheet .sheet-icon-top {
+  width: 56px;
+  height: 56px;
+  background: var(--color-accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 26px;
+  margin: -28px auto 16px;
+  box-shadow: 0 4px 12px rgba(232,114,42,0.3);
+  position: relative;
+  z-index: 1;
+}
+
+.bottom-sheet .sheet-title {
+  text-align: center;
+  font-size: var(--font-size-md);
+  font-weight: 700;
+  color: var(--color-primary);
+  padding: 0 var(--spacing-md) var(--spacing-md);
+}
+
+/* عنصر داخل Bottom Sheet */
+.sheet-option {
+  display: flex;
+  align-items: center;
+  padding: 14px var(--spacing-md);
+  gap: var(--spacing-md);
+  cursor: pointer;
+  border-bottom: 1px solid var(--color-border);
+  transition: background 0.15s;
+}
+
+.sheet-option:last-child {
+  border-bottom: none;
+}
+
+.sheet-option:active {
+  background: var(--color-bg-secondary);
+}
+
+.sheet-option .option-icon {
+  width: 42px;
+  height: 42px;
+  background: var(--color-accent-bg);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-accent);
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.sheet-option .option-text {
+  flex: 1;
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.sheet-option .option-arrow {
+  color: var(--color-text-light);
+  font-size: 14px;
+}
+
+[dir="rtl"] .sheet-option .option-arrow {
+  transform: rotate(180deg);
+}
+
+/* ============================================================
+   التبويبات (Tabs)
+   ============================================================ */
+.tabs {
+  display: flex;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.tab-item {
+  flex: 1;
+  padding: 14px;
+  text-align: center;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  position: relative;
+  transition: color 0.2s;
+}
+
+.tab-item::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: transparent;
+  transition: background 0.2s;
+}
+
+.tab-item.active {
+  color: var(--color-accent);
+}
+
+.tab-item.active::after {
+  background: var(--color-accent);
+}
+
+.tab-item.active-blue {
+  color: var(--color-primary);
+}
+
+.tab-item.active-blue::after {
+  background: var(--color-primary);
+}
+
+/* ============================================================
+   رفع الصور (Image Upload)
+   ============================================================ */
+.upload-area {
+  border: 2px dashed var(--color-border);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  background: var(--color-bg-secondary);
+  transition: all 0.2s;
+  flex: 1;
+  min-height: 90px;
+  text-align: center;
+}
+
+.upload-area:hover {
+  border-color: var(--color-accent);
+  background: var(--color-accent-bg);
+}
+
+.upload-area .upload-icon {
+  color: var(--color-text-light);
+  font-size: 28px;
+}
+
+.upload-area .upload-label {
+  font-size: 11px;
+  color: var(--color-text-secondary);
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+/* ============================================================
+   بانر الإعلانات (Banner/Carousel)
+   ============================================================ */
+.banner-carousel {
+  margin: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  background: linear-gradient(135deg, #1B3A5C, #2D5E8E);
+  padding: var(--spacing-md);
+  min-height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.banner-carousel .banner-text {
+  flex: 1;
+}
+
+.banner-carousel .banner-title {
+  font-size: var(--font-size-base);
+  font-weight: 700;
+  color: var(--color-white);
+  margin-bottom: 4px;
+}
+
+.banner-carousel .banner-subtitle {
+  font-size: var(--font-size-xs);
+  color: rgba(255,255,255,0.75);
+}
+
+.banner-carousel .banner-icon {
+  font-size: 36px;
+  color: var(--color-accent);
+  opacity: 0.9;
+}
+
+/* بانر كرم */
+.karam-banner {
+  margin: var(--spacing-sm) var(--spacing-md);
+  background: linear-gradient(135deg, #FDE8D8, #FFD4BA);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-md);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.karam-banner .karam-icon {
+  font-size: 32px;
+  color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+.karam-banner .karam-text {
+  flex: 1;
+}
+
+.karam-banner .karam-title {
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 6px;
+}
+
+.karam-banner .karam-btn {
+  padding: 6px 14px;
+  background: var(--color-primary);
+  color: white;
+  border-radius: 20px;
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-family);
+}
+
+/* ============================================================
+   القائمة الجانبية (Drawer)
+   ============================================================ */
+.drawer {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 80%;
+  max-width: 300px;
+  height: 100vh;
+  background: var(--color-white);
+  z-index: 300;
+  overflow-y: auto;
+  box-shadow: -4px 0 24px rgba(0,0,0,0.15);
+  animation: slideInRight 0.3s ease;
+  flex-direction: column;
+}
+
+/* في LTR، القائمة تظهر من اليسار */
+[dir="ltr"] .drawer {
+  right: auto;
+  left: 0;
+  animation: slideInLeft 0.3s ease;
+  box-shadow: 4px 0 24px rgba(0,0,0,0.15);
+}
+
+.drawer.active {
+  display: flex;
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0); }
+}
+
+@keyframes slideInLeft {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(0); }
+}
+
+/* رأس القائمة الجانبية */
+.drawer-header {
+  background: var(--color-primary);
+  padding: 40px var(--spacing-md) var(--spacing-md);
+  position: relative;
+}
+
+.drawer-header .drawer-close {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  color: rgba(255,255,255,0.7);
+  font-size: 20px;
+  cursor: pointer;
+}
+
+[dir="ltr"] .drawer-header .drawer-close {
+  left: auto;
+  right: 12px;
+}
+
+.drawer-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--color-bg-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-secondary);
+  font-size: 30px;
+  margin-bottom: var(--spacing-sm);
+  border: 2px solid rgba(255,255,255,0.3);
+}
+
+.drawer-name {
+  font-size: var(--font-size-md);
+  font-weight: 700;
+  color: var(--color-accent);
+  margin-bottom: 2px;
+}
+
+.drawer-phone {
+  font-size: var(--font-size-sm);
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 8px;
+}
+
+.drawer-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  background: rgba(39, 174, 96, 0.2);
+  border: 1px solid var(--color-success);
+  border-radius: 20px;
+  color: var(--color-success);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+}
+
+.drawer-alt-account {
+  margin-top: var(--spacing-sm);
+  padding: 8px var(--spacing-sm);
+  background: rgba(255,255,255,0.1);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.drawer-alt-account .alt-label {
+  font-size: var(--font-size-xs);
+  color: rgba(255,255,255,0.6);
+}
+
+.drawer-alt-account .alt-number {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* عناصر القائمة الجانبية */
+.drawer-menu {
+  flex: 1;
+  padding: var(--spacing-sm) 0;
+}
+
+.drawer-menu-item {
+  display: flex;
+  align-items: center;
+  padding: 14px var(--spacing-md);
+  gap: var(--spacing-md);
+  cursor: pointer;
+  transition: background 0.15s;
+  border-bottom: 1px solid var(--color-bg-secondary);
+}
+
+.drawer-menu-item:active {
+  background: var(--color-bg-secondary);
+}
+
+.drawer-menu-item .menu-icon {
+  width: 36px;
+  height: 36px;
+  background: var(--color-accent-bg);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-accent);
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.drawer-menu-item .menu-text {
+  flex: 1;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.drawer-menu-item .menu-arrow {
+  color: var(--color-text-light);
+  font-size: 14px;
+}
+
+[dir="rtl"] .drawer-menu-item .menu-arrow {
+  transform: rotate(180deg);
+}
+
+/* أسفل القائمة الجانبية */
+.drawer-footer {
+  padding: var(--spacing-md);
+  border-top: 1px solid var(--color-border);
+}
+
+.drawer-lang-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px var(--spacing-md);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--border-radius-sm);
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-primary);
+  background: var(--color-white);
+  cursor: pointer;
+  width: 100%;
+  justify-content: center;
+  margin-bottom: var(--spacing-sm);
+}
+
+.app-version {
+  text-align: center;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-light);
+  margin-top: 8px;
+}
+
+/* ============================================================
+   ملاحظة تحذيرية (Warning Note)
+   ============================================================ */
+.note-box {
+  display: flex;
+  gap: 8px;
+  padding: 10px var(--spacing-md);
+  background: #FFF8F3;
+  border-radius: var(--border-radius-sm);
+  border-right: 3px solid var(--color-accent);
+}
+
+[dir="ltr"] .note-box {
+  border-right: none;
+  border-left: 3px solid var(--color-accent);
+}
+
+.note-box .note-icon {
+  color: var(--color-accent);
+  font-size: 16px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.note-box .note-text {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+/* ============================================================
+   بطاقة الشبكة (Bordered Card Section)
+   ============================================================ */
+.section-card {
+  margin: 0 var(--spacing-md) var(--spacing-md);
+  background: var(--color-white);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+}
+
+.section-title {
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--color-primary);
+  padding: var(--spacing-md) var(--spacing-md) var(--spacing-sm);
+}
+
+.section-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-md) var(--spacing-md) var(--spacing-sm);
+}
+
+.section-title-row .see-all {
+  font-size: var(--font-size-xs);
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+/* ============================================================
+   بطاقة بيانات المستخدم (User Info Row)
+   ============================================================ */
+.info-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px var(--spacing-md);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.info-row:last-child {
+  border-bottom: none;
+}
+
+.info-row .info-label {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  flex: 1;
+}
+
+.info-row .info-value {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-primary);
+  flex: 2;
+  text-align: start;
+}
+
+.info-row .info-edit {
+  color: var(--color-accent);
+  font-size: 16px;
+  cursor: pointer;
+  padding-right: 4px;
+}
+
+/* ============================================================
+   أيقونة المستخدم الكبيرة (User Profile Top)
+   ============================================================ */
+.profile-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--spacing-lg) var(--spacing-md) var(--spacing-md);
+  background: linear-gradient(180deg, #FFF3EB 0%, var(--color-white) 100%);
+}
+
+.profile-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--color-bg-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-secondary);
+  font-size: 40px;
+  margin-bottom: var(--spacing-sm);
+  border: 3px solid var(--color-accent-light);
+}
+
+.profile-name {
+  font-size: var(--font-size-md);
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 4px;
+}
+
+.profile-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px;
+  background: rgba(39, 174, 96, 0.1);
+  border: 1px solid var(--color-success);
+  border-radius: 20px;
+  color: var(--color-success);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+}
+
+/* ============================================================
+   حقول متجاورة (Side by Side Inputs)
+   ============================================================ */
+.input-row {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.input-row .form-group {
+  flex: 1;
+}
+
+/* ============================================================
+   شريط اختيار العملة (Currency Bar)
+   ============================================================ */
+.currency-selector {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md);
+  background: var(--color-bg-secondary);
+  border-radius: var(--border-radius);
+  margin: 0 var(--spacing-md) var(--spacing-md);
+}
+
+.currency-box {
+  flex: 1;
+  background: var(--color-white);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--border-radius-sm);
+  padding: 10px;
+  cursor: pointer;
+}
+
+.currency-box.active-box {
+  border-color: var(--color-accent);
+  background: var(--color-accent-bg);
+}
+
+.currency-box .cur-label {
+  font-size: 10px;
+  color: var(--color-text-secondary);
+  margin-bottom: 4px;
+}
+
+.currency-box .cur-value {
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.currency-box .cur-value select {
+  appearance: none;
+  border: none;
+  background: none;
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--color-primary);
+  cursor: pointer;
+  outline: none;
+  width: 100%;
+  direction: inherit;
+}
+
+.currency-swap {
+  width: 36px;
+  height: 36px;
+  background: var(--color-accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(232,114,42,0.3);
+}
+
+/* ============================================================
+   بطاقة سعر الصرف
+   ============================================================ */
+.exchange-rate-card {
+  margin: 0 var(--spacing-md) var(--spacing-md);
+  background: var(--color-blue-light);
+  border: 1.5px solid #B8D8F0;
+  border-radius: var(--border-radius);
+  padding: var(--spacing-md);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  cursor: pointer;
+}
+
+.exchange-rate-card .rate-logo {
+  width: 40px;
+  height: 40px;
+  background: var(--color-primary);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-accent);
+  font-size: 18px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.exchange-rate-card .rate-info {
+  flex: 1;
+}
+
+.exchange-rate-card .rate-name {
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.exchange-rate-card .rate-value {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  margin-top: 2px;
+}
+
+.exchange-rate-card .rate-check {
+  color: var(--color-success);
+  font-size: 20px;
+}
+
+/* ============================================================
+   شريط رصيد التحويل
+   ============================================================ */
+.balance-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 0;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+.balance-row .balance-val {
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.balance-row .balance-icon-sm {
+  color: var(--color-accent);
+  font-size: 14px;
+}
+
+/* ============================================================
+   حقل اختيار من المفضلة
+   ============================================================ */
+.favorites-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-accent);
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: var(--spacing-md);
+}
+
+/* ============================================================
+   أزرار التواصل (WhatsApp, Contact)
+   ============================================================ */
+.contact-buttons {
+  display: flex;
+  gap: var(--spacing-sm);
+  padding: 0 var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.contact-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px;
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-family);
+}
+
+.contact-btn.whatsapp {
+  background: #25D366;
+  color: white;
+}
+
+.contact-btn.support {
+  background: var(--color-bg-secondary);
+  color: var(--color-primary);
+  border: 1px solid var(--color-border);
+}
+
+/* ============================================================
+   عنصر المفعّل/المطفأ (Status Chip)
+   ============================================================ */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+}
+
+.chip-success {
+  background: rgba(39, 174, 96, 0.1);
+  color: var(--color-success);
+  border: 1px solid var(--color-success);
+}
+
+.chip-warning {
+  background: rgba(232, 114, 42, 0.1);
+  color: var(--color-accent);
+  border: 1px solid var(--color-accent);
+}

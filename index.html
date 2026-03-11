@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>محفظتي — تصميم واجهة المستخدم</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <!-- Google Fonts - Cairo -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/screens.css" />
+</head>
+<body>
+
+<!-- ============================================================
+     حاوية التطبيق الرئيسية
+     ============================================================ -->
+<div id="app">
+
+  <!-- ============================================================
+       شاشة 1: تسجيل الدخول (Login)
+       ============================================================ -->
+  <section id="screen-login" class="screen active">
+    <div class="screen-content" style="overflow-y:auto; position:relative;">
+
+      <!-- لوقو + اسم التطبيق -->
+      <div class="login-logo-section">
+        <div class="login-logo">
+          <i class="fa-solid fa-wallet"></i>
+        </div>
+        <div class="login-app-name" data-i18n="appName">محفظتي</div>
+        <div class="login-subtitle">خدمات مالية متكاملة</div>
+      </div>
+
+      <!-- نموذج الدخول -->
+      <div class="login-form-section">
+        <div class="login-title" data-i18n="loginWelcome">مرحباً بك</div>
+        <div class="login-welcome" data-i18n="loginTitle">تسجيل الدخول</div>
+
+        <!-- رقم الموبايل -->
+        <div class="form-group">
+          <label class="form-label" for="login-mobile">رقم الموبايل</label>
+          <div class="input-wrapper">
+            <input type="tel" id="login-mobile" class="form-input active-input" placeholder="7---------" maxlength="10" />
+            <i class="fa-solid fa-mobile-screen-button input-icon"></i>
+          </div>
+        </div>
+
+        <!-- كلمة المرور -->
+        <div class="form-group">
+          <label class="form-label" for="login-password">كلمة المرور</label>
+          <div class="input-wrapper">
+            <input type="password" id="login-password" class="form-input" placeholder="••••••••" />
+            <i class="fa-solid fa-eye input-icon clickable" id="login-password-eye"
+               onclick="togglePassword('login-password')"></i>
+          </div>
+        </div>
+
+        <!-- نسيت كلمة المرور -->
+        <div class="forgot-password" data-i18n="forgotPassword">نسيت كلمة المرور؟</div>
+
+        <!-- زر تسجيل الدخول -->
+        <button class="btn btn-primary mb-md" onclick="showScreen('screen-home')">
+          <i class="fa-solid fa-right-to-bracket"></i>
+          <span data-i18n="loginBtn">تسجيل الدخول</span>
+        </button>
+
+        <!-- رابط التسجيل -->
+        <div class="register-link mb-md">
+          <span data-i18n="noAccount">ليس لديك حساب؟</span>
+          <a onclick="showScreen('screen-register')" style="cursor:pointer;">
+            <span data-i18n="newUser"> مستخدم جديد</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- أزرار التواصل -->
+      <div class="contact-buttons">
+        <button class="contact-btn whatsapp">
+          <i class="fa-brands fa-whatsapp"></i>
+          <span data-i18n="whatsapp">واتساب</span>
+        </button>
+        <button class="contact-btn support">
+          <i class="fa-solid fa-headset"></i>
+          <span data-i18n="contactUs">تواصل معنا</span>
+        </button>
+      </div>
+
+      <!-- الزخرفة الإسلامية + رقم الإصدار -->
+      <div class="login-footer">
+        <div class="app-version" data-i18n="version">الإصدار 1.0.0</div>
+        <div class="islamic-pattern"></div>
+      </div>
+
+    </div><!-- /screen-content -->
+  </section><!-- /screen-login -->
+
+
+  <!-- ============================================================
+       شاشة 2: إنشاء حساب - الخطوة 1 (Registration Step 1)
+       ============================================================ -->
+  <section id="screen-register" class="screen">
+
+    <!-- الهيدر -->
+    <header class="app-header">
+      <div class="header-action" onclick="showScreen('screen-login')">
+        <i class="fa-solid fa-arrow-right"></i>
+      </div>
+      <div class="header-title">طلب إنشاء حساب</div>
+      <div class="header-action"></div>
+    </header>
+
+    <div class="screen-content">
+      <!-- Stepper -->
+      <div class="stepper">
+        <div class="step active">
+          <div class="step-circle">1</div>
+          <div class="step-label">البيانات</div>
+        </div>
+        <div class="step-line"></div>
+        <div class="step">
+          <div class="step-circle">2</div>
+          <div class="step-label">التفعيل</div>
+        </div>
+        <div class="step-line"></div>
+        <div class="step">
+          <div class="step-circle">3</div>
+          <div class="step-label">الرمز السري</div>
+        </div>
+      </div>
+
+      <div class="form-screen-content">
+
+        <!-- الاسم الرباعي بالعربي -->
+        <div class="form-group">
+          <label class="form-label">الاسم الرباعي مع اللقب (بالعربي)</label>
+          <div class="name-grid">
+            <div class="form-group">
+              <div class="input-wrapper">
+                <input type="text" class="form-input" placeholder="الاسم الأول" />
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-wrapper">
+                <input type="text" class="form-input" placeholder="الاسم الثاني" />
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-wrapper">
+                <input type="text" class="form-input" placeholder="الاسم الثالث" />
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-wrapper">
+                <input type="text" class="form-input" placeholder="اللقب" />
+              </div>
+            </div>
+          </div>
+          <!-- ملاحظة تحذيرية -->
+          <div class="note-box">
+            <i class="fa-solid fa-triangle-exclamation note-icon"></i>
+            <span class="note-text">يجب أن يكون الاسم المدخل مطابق للهوية</span>
+          </div>
+        </div>
+
+        <!-- الاسم الرباعي بالإنجليزي -->
+        <div class="form-group">
+          <label class="form-label">الاسم الرباعي مع اللقب (بالإنجليزي)</label>
+          <div class="name-grid">
+            <div class="form-group">
+              <div class="input-wrapper">
+                <input type="text" class="form-input" placeholder="First Name" style="direction:ltr;text-align:left;" />
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-wrapper">
+                <input type="text" class="form-input" placeholder="Second Name" style="direction:ltr;text-align:left;" />
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-wrapper">
+                <input type="text" class="form-input" placeholder="Third Name" style="direction:ltr;text-align:left;" />
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-wrapper">
+                <input type="text" class="form-input" placeholder="Last Name" style="direction:ltr;text-align:left;" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- رقم الموبايل -->
+        <div class="form-group">
+          <label class="form-label">رقم الموبايل</label>
+          <div class="input-wrapper">
+            <input type="tel" class="form-input" placeholder="7---------" />
+            <i class="fa-solid fa-mobile-screen-button input-icon"></i>
+          </div>
+        </div>
+
+        <!-- اختيار الجنس -->
+        <div class="form-group">
+          <label class="form-label">الجنس</label>
+          <div class="radio-group">
+            <div class="radio-btn selected" data-gender="male" onclick="selectGender('male')">
+              <i class="fa-solid fa-mars"></i>
+              ذكر
+            </div>
+            <div class="radio-btn" data-gender="female" onclick="selectGender('female')">
+              <i class="fa-solid fa-venus"></i>
+              أنثى
+            </div>
+          </div>
+        </div>
+
+        <!-- موافقة الشروط -->
+        <div class="form-group mb-lg">
+          <label class="checkbox-wrapper">
+            <input type="checkbox" checked />
+            <span class="checkbox-label">
+              أوافق على <a href="#">الشروط والأحكام</a>
+            </span>
+          </label>
+        </div>
+
+        <button class="btn btn-primary" onclick="showScreen('screen-activation')">
+          التالي <i class="fa-solid fa-arrow-left"></i>
+        </button>
+
+      </div><!-- /form-screen-content -->
+    </div><!-- /screen-content -->
+  </section><!-- /screen-register -->
+
+
+  <!-- ============================================================
+       شاشة 3: تفعيل الحساب (Account Activation)
+       ============================================================ -->
+  <section id="screen-activation" class="screen">
+
+    <header class="app-header">
+      <div class="header-action" onclick="showScreen('screen-register')">
+        <i class="fa-solid fa-arrow-right"></i>
+      </div>
+      <div class="header-title">تفعيل الحساب</div>
+      <div class="header-action"></div>
+    </header>
+
+    <div class="screen-content">
+      <!-- Stepper -->
+      <div class="stepper">
+        <div class="step done">
+          <div class="step-circle"><i class="fa-solid fa-check" style="font-size:12px;"></i></div>
+          <div class="step-label">البيانات</div>
+        </div>
+        <div class="step-line done"></div>
+        <div class="step active">
+          <div class="step-circle">2</div>
+          <div class="step-label">التفعيل</div>
+        </div>
+        <div class="step-line"></div>
+        <div class="step">
+          <div class="step-circle">3</div>
+          <div class="step-label">الرمز السري</div>
+        </div>
+      </div>
+
+      <div class="form-screen-content">
+
+        <!-- رقم الهوية -->
+        <div class="form-group">
+          <label class="form-label">رقم الهوية</label>
+          <div class="input-wrapper">
+            <input type="text" class="form-input active-input" placeholder="أدخل رقم الهوية" />
+            <i class="fa-solid fa-id-card input-icon"></i>
+          </div>
+        </div>
+
+        <!-- البريد الإلكتروني -->
+        <div class="form-group">
+          <label class="form-label">البريد الإلكتروني</label>
+          <div class="input-wrapper">
+            <input type="email" class="form-input" placeholder="example@email.com" style="direction:ltr;text-align:left;" />
+            <i class="fa-solid fa-envelope input-icon"></i>
+          </div>
+        </div>
+
+        <!-- تاريخ الميلاد -->
+        <div class="form-group">
+          <label class="form-label">تاريخ الميلاد</label>
+          <div class="input-wrapper">
+            <input type="date" class="form-input" style="direction:ltr;" />
+            <i class="fa-solid fa-calendar input-icon"></i>
+          </div>
+        </div>
+
+        <!-- الحالة الاجتماعية -->
+        <div class="form-group">
+          <label class="form-label">الحالة الاجتماعية</label>
+          <div class="input-wrapper">
+            <select class="form-select">
+              <option value="">اختر الحالة الاجتماعية</option>
+              <option>أعزب / عزباء</option>
+              <option>متزوج / متزوجة</option>
+              <option>مطلق / مطلقة</option>
+              <option>أرمل / أرملة</option>
+            </select>
+            <i class="fa-solid fa-chevron-down select-arrow"></i>
+          </div>
+        </div>
+
+        <!-- رفع صور الهوية -->
+        <div class="form-group">
+          <label class="form-label">إضافة صور الهوية</label>
+          <div class="note-box mb-sm">
+            <i class="fa-solid fa-lightbulb note-icon"></i>
+            <span class="note-text">قم بإضافة صور الهوية (أمام/خلف) وصورة سيلفي مع الهوية</span>
+          </div>
+          <div class="upload-grid">
+            <div class="upload-area">
+              <i class="fa-solid fa-id-card upload-icon"></i>
+              <div class="upload-label">أمام الهوية</div>
+            </div>
+            <div class="upload-area">
+              <i class="fa-regular fa-id-card upload-icon"></i>
+              <div class="upload-label">خلف الهوية</div>
+            </div>
+            <div class="upload-area">
+              <i class="fa-solid fa-camera upload-icon"></i>
+              <div class="upload-label">سيلفي مع الهوية</div>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn btn-primary">
+          التالي <i class="fa-solid fa-arrow-left"></i>
+        </button>
+
+      </div><!-- /form-screen-content -->
+    </div><!-- /screen-content -->
+  </section><!-- /screen-activation -->
+
+
+  <!-- ============================================================
+       شاشة 4: الصفحة الرئيسية (Home/Dashboard)
+       ============================================================ -->
+  <section id="screen-home" class="screen">
+
+    <!-- الهيدر الرئيسي -->
+    <header class="home-header">
+      <div class="header-icons">
+        <div class="home-header-icon-btn" onclick="openDrawer()" style="cursor:pointer; padding:8px; color:var(--color-primary); font-size:20px;">
+          <i class="fa-solid fa-bars"></i>
+        </div>
+        <div class="home-header-icon-btn" style="cursor:pointer; padding:8px; color:var(--color-primary); font-size:20px; position:relative;">
+          <i class="fa-solid fa-bell"></i>
+          <span class="badge">3</span>
+        </div>
+      </div>
+      <div class="home-header-logo" style="font-size:22px; font-weight:800; color:var(--color-accent);">
+        محفظ<span style="color:var(--color-primary);">تي</span>
+      </div>
+      <div class="header-icons">
+        <div class="home-header-icon-btn" style="cursor:pointer; padding:8px; color:var(--color-primary); font-size:20px;">
+          <i class="fa-solid fa-qrcode"></i>
+        </div>
+        <div class="home-header-icon-btn" style="cursor:pointer; padding:8px; color:var(--color-primary); font-size:20px;">
+          <i class="fa-solid fa-user-circle"></i>
+        </div>
+      </div>
+    </header>
+
+    <div class="screen-content">
+
+      <!-- بطاقة الرصيد -->
+      <div class="balance-card">
+        <div class="balance-header">
+          <div>
+            <div class="balance-label">رصيدي ر.ي</div>
+          </div>
+          <div class="balance-icon">
+            <i class="fa-solid fa-wallet"></i>
+          </div>
+        </div>
+        <div class="balance-amount">
+          <span>0.00</span>
+          <i class="fa-solid fa-eye balance-eye"></i>
+        </div>
+        <div class="dots-indicator" style="margin-top:12px;">
+          <div class="dot active"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+        </div>
+      </div>
+
+      <!-- سلايدر الإعلانات -->
+      <div class="banner-carousel">
+        <div class="banner-text">
+          <div class="banner-title">العلم خير وتمويلنا غير</div>
+          <div class="banner-subtitle">دفعة محفظتي 2025 — سجّل الآن</div>
+        </div>
+        <i class="fa-solid fa-graduation-cap banner-icon"></i>
+      </div>
+      <div class="dots-indicator">
+        <div class="dot active"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+
+      <!-- بانر كرم -->
+      <div class="karam-banner">
+        <i class="fa-solid fa-gift karam-icon"></i>
+        <div class="karam-text">
+          <div class="karam-title">أنت كريم وهم يستاهلوا!</div>
+          <button class="karam-btn">أكرمهم الآن</button>
+        </div>
+      </div>
+
+      <!-- شبكة الخدمات -->
+      <div class="home-section-header">
+        <span>الخدمات</span>
+      </div>
+      <div class="services-grid">
+
+        <div class="service-item" onclick="openTransferSheet()">
+          <div class="service-icon">
+            <i class="fa-solid fa-money-bill-transfer"></i>
+          </div>
+          <div class="service-name">تحويل أموال</div>
+        </div>
+
+        <div class="service-item" onclick="showScreen('screen-receive')">
+          <div class="service-icon">
+            <i class="fa-solid fa-hand-holding-dollar"></i>
+          </div>
+          <div class="service-name">استلام حوالات</div>
+        </div>
+
+        <div class="service-item">
+          <div class="service-icon">
+            <i class="fa-solid fa-cart-shopping"></i>
+          </div>
+          <div class="service-name">دفع مشتريات وخدمات</div>
+        </div>
+
+        <div class="service-item">
+          <div class="service-icon">
+            <i class="fa-solid fa-file-invoice-dollar"></i>
+          </div>
+          <div class="service-name">فواتير ومدفوعات</div>
+        </div>
+
+        <div class="service-item">
+          <div class="service-icon">
+            <i class="fa-solid fa-money-bill-wave"></i>
+          </div>
+          <div class="service-name">سحب نقدي</div>
+        </div>
+
+        <div class="service-item">
+          <div class="service-icon">
+            <i class="fa-solid fa-sim-card"></i>
+          </div>
+          <div class="service-name">شراء رصيد وباقات</div>
+        </div>
+
+        <div class="service-item">
+          <div class="service-icon">
+            <i class="fa-solid fa-building-columns"></i>
+          </div>
+          <div class="service-name">بنوك ومحافظ إلكترونية</div>
+        </div>
+
+        <div class="service-item">
+          <div class="service-icon">
+            <i class="fa-solid fa-hand-holding-heart"></i>
+          </div>
+          <div class="service-name">تبرعات</div>
+        </div>
+
+        <div class="service-item">
+          <div class="service-icon">
+            <i class="fa-solid fa-credit-card"></i>
+          </div>
+          <div class="service-name">بطاقات إلكترونية</div>
+        </div>
+
+      </div><!-- /services-grid -->
+
+      <!-- العمليات السابقة -->
+      <div class="home-section-header" style="margin-top:var(--spacing-md);">
+        <span>العمليات السابقة</span>
+        <a class="see-all">عرض الكل</a>
+      </div>
+      <div class="section-card" style="margin:0 var(--spacing-md) var(--spacing-lg);">
+        <div class="empty-transactions">
+          <i class="fa-regular fa-folder-open empty-icon"></i>
+          <div class="empty-text">لا يوجد بيانات حالياً</div>
+        </div>
+      </div>
+
+    </div><!-- /screen-content -->
+  </section><!-- /screen-home -->
+
+
+  <!-- ============================================================
+       شاشة 6: بيانات الحساب (Account Details)
+       ============================================================ -->
+  <section id="screen-account" class="screen">
+
+    <header class="app-header">
+      <div class="header-action" onclick="closeDrawer(); showScreen('screen-home');">
+        <i class="fa-solid fa-arrow-right"></i>
+      </div>
+      <div class="header-title">بيانات الحساب</div>
+      <div class="header-action"></div>
+    </header>
+
+    <div class="screen-content">
+
+      <!-- معلومات المستخدم -->
+      <div class="profile-top">
+        <div class="profile-avatar">
+          <i class="fa-solid fa-user"></i>
+        </div>
+        <div class="profile-name">مصطفى عمار محمد ضبعان</div>
+        <div class="profile-badge">
+          <i class="fa-solid fa-circle-check"></i>
+          حساب مفعّل
+        </div>
+      </div>
+
+      <!-- بطاقة استكمال البيانات -->
+      <div class="completion-card">
+        <div class="completion-header">
+          <div class="completion-title">استكمال بيانات الحساب</div>
+          <div class="completion-count">8 / 9 مكتمل</div>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill green" style="width:88%;"></div>
+        </div>
+      </div>
+
+      <!-- بطاقة البيانات -->
+      <div class="section-card">
+        <div class="info-row">
+          <span class="info-label">الاسم</span>
+          <span class="info-value">مصطفى عمار محمد ضبعان</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">رقم الموبايل</span>
+          <span class="info-value" style="direction:ltr;text-align:start;">777785026</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">رقم الحساب البديل</span>
+          <span class="info-value" style="direction:ltr;text-align:start;">192967789</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">البريد الإلكتروني</span>
+          <span class="info-value" style="color:var(--color-text-light);">لا يوجد</span>
+          <i class="fa-solid fa-pen info-edit"></i>
+        </div>
+        <div class="info-row">
+          <span class="info-label">نوع الهوية</span>
+          <span class="info-value">
+            هوية شخصية
+            <div style="font-size:11px;color:var(--color-text-secondary);margin-top:2px;">
+              إصدار: 2020 — انتهاء: 2025
+            </div>
+          </span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">رقم الهوية</span>
+          <span class="info-value" style="direction:ltr;text-align:start;">01011114037</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">تاريخ الميلاد</span>
+          <span class="info-value" style="direction:ltr;text-align:start;">2003-09-22</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">محل الإقامة</span>
+          <span class="info-value">أمانة العاصمة — معين</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">الجنس</span>
+          <span class="info-value">ذكر</span>
+        </div>
+      </div>
+
+    </div><!-- /screen-content -->
+  </section><!-- /screen-account -->
+
+
+  <!-- ============================================================
+       شاشة 7: الحماية (Security)
+       ============================================================ -->
+  <section id="screen-security" class="screen">
+
+    <header class="app-header">
+      <div class="header-action" onclick="showScreen('screen-home')">
+        <i class="fa-solid fa-arrow-right"></i>
+      </div>
+      <div class="header-title">الحماية</div>
+      <div class="header-action"></div>
+    </header>
+
+    <div class="screen-content" style="padding-top:8px;">
+
+      <!-- إعدادات تسجيل الدخول -->
+      <div class="security-section-title">
+        <i class="fa-solid fa-shield-halved" style="color:var(--color-accent);"></i>
+        إعدادات تسجيل الدخول
+      </div>
+      <div class="section-card">
+        <div class="card-item" onclick="showScreen('screen-home')">
+          <div class="item-info">
+            <div class="item-title">الرمز السري</div>
+            <div class="item-subtitle">تغيير الرمز السري</div>
+          </div>
+          <i class="fa-solid fa-chevron-left item-arrow"></i>
+        </div>
+        <div class="divider" style="margin:0 var(--spacing-md);"></div>
+        <div class="card-item">
+          <div class="item-info">
+            <div class="item-title">الدخول بالبصمة</div>
+            <div class="item-subtitle">تفعيل البصمة</div>
+          </div>
+          <label class="toggle">
+            <input type="checkbox" />
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <!-- الدفع عبر الإنترنت -->
+      <div class="security-section-title">
+        <i class="fa-solid fa-globe" style="color:var(--color-accent);"></i>
+        الدفع عبر الإنترنت
+        <i class="fa-solid fa-lightbulb info-icon" style="margin-right:auto;"></i>
+      </div>
+      <div class="section-card">
+        <div class="card-item">
+          <div class="item-info">
+            <div class="item-title">تفعيل الدفع عبر الإنترنت</div>
+          </div>
+          <label class="toggle">
+            <input type="checkbox" checked />
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <!-- الأجهزة المرتبطة -->
+      <div class="security-section-title">
+        <i class="fa-solid fa-mobile-alt" style="color:var(--color-accent);"></i>
+        الأجهزة المرتبطة بالحساب
+      </div>
+      <div class="section-card">
+        <div class="card-item">
+          <div class="item-info">
+            <div class="item-title">الجهاز الرئيسي</div>
+            <div class="item-subtitle">samsung-SM-N986U</div>
+          </div>
+          <i class="fa-solid fa-chevron-left item-arrow"></i>
+        </div>
+      </div>
+
+      <!-- حذف الحساب -->
+      <div class="security-section-title">
+        <i class="fa-solid fa-trash" style="color:#E74C3C;"></i>
+        <span style="color:#E74C3C;">حذف الحساب</span>
+      </div>
+      <div class="section-card" style="margin-bottom:24px;">
+        <div class="card-item" onclick="showScreen('screen-delete-account')">
+          <div class="item-info">
+            <div class="item-title" style="color:#E74C3C;">تفاصيل حذف الحساب</div>
+          </div>
+          <i class="fa-solid fa-chevron-left item-arrow"></i>
+        </div>
+      </div>
+
+    </div><!-- /screen-content -->
+  </section><!-- /screen-security -->
+
+
+  <!-- ============================================================
+       شاشة 8: الخصوصية (Privacy)
+       ============================================================ -->
+  <section id="screen-privacy" class="screen">
+
+    <header class="app-header">
+      <div class="header-action" onclick="showScreen('screen-home')">
+        <i class="fa-solid fa-arrow-right"></i>
+      </div>
+      <div class="header-title">الخصوصية</div>
+      <div class="header-action"></div>
+    </header>
+
+    <div class="screen-content" style="padding-top:8px;">
+
+      <div class="section-card" style="margin-top:var(--spacing-md);">
+        <div class="card-item">
+          <div class="item-info">
+            <div class="item-title">اسمك كما يظهر للآخرين</div>
+            <div class="item-subtitle">مصطفى عمار محمد ضبعان</div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+            <label class="toggle">
+              <input type="checkbox" />
+              <span class="toggle-slider"></span>
+            </label>
+            <span style="font-size:10px;color:var(--color-text-secondary);">إخفاء الاسم</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-title" style="margin-top:var(--spacing-md);">سياسة الخصوصية</div>
+      <div class="section-card">
+        <div class="card-item">
+          <div class="item-info">
+            <div class="item-title">عرض سياسة الخصوصية</div>
+          </div>
+          <i class="fa-solid fa-chevron-left item-arrow"></i>
+        </div>
+      </div>
+
+    </div><!-- /screen-content -->
+  </section><!-- /screen-privacy -->
+
+
+  <!-- ============================================================
+       شاشة 9: حذف الحساب (Delete Account)
+       ============================================================ -->
+  <section id="screen-delete-account" class="screen">
+
+    <header class="app-header">
+      <div class="header-action" onclick="showScreen('screen-security')">
+        <i class="fa-solid fa-arrow-right"></i>
+      </div>
+      <div class="header-title">حذف الحساب</div>
+      <div class="header-action"></div>
+    </header>
+
+    <div class="screen-content">
+      <div class="form-screen-content">
+
+        <div class="delete-section-title" style="padding:0 0 var(--spacing-sm);">أدخل رقم الهوية</div>
+
+        <!-- حقل رقم الهوية -->
+        <div class="form-group">
+          <div class="input-wrapper">
+            <input type="text" class="form-input active-input" placeholder="أدخل رقم الهوية" />
+            <i class="fa-solid fa-id-card input-icon" style="color:var(--color-accent);"></i>
+          </div>
+        </div>
+
+        <!-- ملاحظة -->
+        <div class="note-box mb-lg">
+          <i class="fa-solid fa-lightbulb note-icon"></i>
+          <span class="note-text">
+            يرجى إدخال نفس رقم بطاقة الهوية التي استخدمت أثناء عملية التسجيل:
+            هوية شخصية أو جواز السفر أو بطاقة الاستبيان
+          </span>
+        </div>
+
+        <div class="delete-section-title" style="padding:0 0 var(--spacing-sm);">اختر سبب</div>
+
+        <!-- اختيار السبب -->
+        <div class="form-group mb-xl">
+          <div class="input-wrapper">
+            <select class="form-select">
+              <option value="">اختر سبب...</option>
+              <option>لم أعد بحاجة للحساب</option>
+              <option>مشكلة في الخدمة</option>
+              <option>إنشاء حساب جديد</option>
+              <option>أسباب شخصية</option>
+            </select>
+            <i class="fa-solid fa-chevron-down select-arrow"></i>
+          </div>
+        </div>
+
+        <button class="btn btn-disabled" style="margin-top:auto;">
+          التالي <i class="fa-solid fa-arrow-left"></i>
+        </button>
+
+      </div><!-- /form-screen-content -->
+    </div><!-- /screen-content -->
+  </section><!-- /screen-delete-account -->
+
+
+  <!-- ============================================================
+       شاشة 10: دعوة صديق (Invite Friend)
+       ============================================================ -->
+  <section id="screen-invite" class="screen">
+
+    <header class="app-header">
+      <div class="header-action" onclick="showScreen('screen-home')">
+        <i class="fa-solid fa-xmark"></i>
+      </div>
+      <div class="header-title">دعوة صديق</div>
+      <div class="header-action">
+        <i class="fa-solid fa-circle-question"></i>
+      </div>
+    </header>
+
+    <!-- بانر الدعوة -->
+    <div class="invite-banner">
+      <i class="fa-solid fa-user-group invite-icon"></i>
+      <div class="invite-text">
+        <div class="invite-title">تطبيق واحد للجميع!</div>
+        <div class="invite-desc">
+          عرّف أحبابك على محفظتي فالكثير من العروض والخدمات المميزة بانتظاركم
+        </div>
+      </div>
+    </div>
+
+    <div class="screen-content">
+      <div class="form-screen-content">
+
+        <!-- رقم موبايل الصديق -->
+        <div class="form-group">
+          <label class="form-label">رقم موبايل صديقك</label>
+          <div class="input-wrapper">
+            <input type="tel" class="form-input" placeholder="7---------" />
+            <i class="fa-solid fa-user input-icon"></i>
+          </div>
+        </div>
+
+        <!-- اسم الصديق -->
+        <div class="form-group">
+          <label class="form-label">اسم صديقك</label>
+          <div class="input-wrapper">
+            <input type="text" class="form-input" placeholder="اسم الصديق" />
+          </div>
+        </div>
+
+        <button class="btn btn-disabled" style="margin-top:var(--spacing-lg);">
+          <i class="fa-solid fa-paper-plane"></i>
+          أرسل الدعوة
+        </button>
+
+      </div><!-- /form-screen-content -->
+    </div><!-- /screen-content -->
+  </section><!-- /screen-invite -->
+
+
+  <!-- ============================================================
+       شاشة 11: السقوف (Limits)
+       ============================================================ -->
+  <section id="screen-limits" class="screen">
+
+    <header class="app-header">
+      <div class="header-action" onclick="showScreen('screen-home')">
+        <i class="fa-solid fa-arrow-right"></i>
+      </div>
+      <div class="header-title">السقوف</div>
+      <div class="header-action"></div>
+    </header>
+
+    <div class="screen-content" style="padding-top:var(--spacing-md);">
+      <div class="limits-card">
+
+        <!-- السقف اليومي -->
+        <div class="limit-section">
+          <div class="limit-header">
+            <div class="limit-title">السقف اليومي</div>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width:0%;"></div>
+          </div>
+          <div class="limit-values">
+            <div class="limit-value-item">
+              <div class="limit-value-label">الاستخدام الحالي</div>
+              <div class="limit-value-amount">0.00</div>
+            </div>
+            <div class="limit-value-item">
+              <div class="limit-value-label">أعلى سقف</div>
+              <div class="limit-value-amount">0.00</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- الفاصل -->
+        <div class="divider"></div>
+
+        <!-- السقف الشهري -->
+        <div class="limit-section">
+          <div class="limit-header">
+            <div class="limit-title">السقف الشهري</div>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width:0%;"></div>
+          </div>
+          <div class="limit-values">
+            <div class="limit-value-item">
+              <div class="limit-value-label">الاستخدام الحالي</div>
+              <div class="limit-value-amount">0.00</div>
+            </div>
+            <div class="limit-value-item">
+              <div class="limit-value-label">أعلى سقف</div>
+              <div class="limit-value-amount">0.00</div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /limits-card -->
+    </div><!-- /screen-content -->
+  </section><!-- /screen-limits -->
+
+
+  <!-- ============================================================
+       شاشة 13: تحويل لعميل (Transfer to Client)
+       ============================================================ -->
+  <section id="screen-transfer" class="screen">
+
+    <header class="app-header">
+      <div class="header-action" onclick="showScreen('screen-home')">
+        <i class="fa-solid fa-arrow-right"></i>
+      </div>
+      <div class="header-title">تحويل أموال</div>
+      <div class="header-action">
+        <i class="fa-solid fa-circle-question"></i>
+      </div>
+    </header>
+
+    <div class="screen-content">
+      <div class="form-screen-content">
+
+        <!-- QR Code link -->
+        <div class="qr-link mb-md">
+          <i class="fa-solid fa-qrcode"></i>
+          <span>مسح QR Code</span>
+        </div>
+
+        <div class="section-title" style="padding:0 0 var(--spacing-sm);">
+          أدخل رقم موبايل المستلم
+        </div>
+
+        <!-- رقم الموبايل -->
+        <div class="form-group">
+          <div class="input-wrapper">
+            <input type="tel" class="form-input active-input" placeholder="7---------" />
+            <i class="fa-solid fa-user input-icon"></i>
+          </div>
+        </div>
+
+        <!-- المفضلة -->
+        <div class="favorites-link">
+          <i class="fa-solid fa-star"></i>
+          اختر من المفضلة
+        </div>
+
+        <!-- مبلغ العملية -->
+        <div class="section-title" style="padding:0 0 var(--spacing-sm);">مبلغ العملية</div>
+        <div class="input-row mb-sm">
+          <div class="form-group">
+            <div class="input-wrapper">
+              <input type="number" class="form-input" placeholder="أدخل المبلغ" style="direction:ltr;" />
+            </div>
+          </div>
+          <div class="form-group" style="max-width:90px;">
+            <div class="input-wrapper">
+              <select class="form-select" style="padding-left:8px;">
+                <option>ر.ي</option>
+                <option>ر.س</option>
+                <option>USD</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- الرصيد -->
+        <div class="balance-row mb-lg">
+          <i class="fa-solid fa-wallet balance-icon-sm"></i>
+          <span>رصيدي</span>
+          <span class="balance-val">0.00 ر.ي</span>
+        </div>
+
+        <button class="btn btn-disabled">
+          التالي <i class="fa-solid fa-arrow-left"></i>
+        </button>
+
+      </div><!-- /form-screen-content -->
+    </div><!-- /screen-content -->
+  </section><!-- /screen-transfer -->
+
+
+  <!-- ============================================================
+       شاشة 14: المصارفة (Currency Exchange)
+       ============================================================ -->
+  <section id="screen-exchange" class="screen">
+
+    <header class="app-header">
+      <div class="header-action" onclick="showScreen('screen-home')">
+        <i class="fa-solid fa-arrow-right"></i>
+      </div>
+      <div class="header-title">مصارفة</div>
+      <div class="header-action"></div>
+    </header>
+
+    <div class="screen-content" style="padding-top:var(--spacing-md);">
+
+      <!-- اختيار العملة -->
+      <div class="section-title" style="padding:0 var(--spacing-md) var(--spacing-sm);">اختر العملة</div>
+      <div class="currency-selector">
+        <div class="currency-box active-box">
+          <div class="cur-label">من</div>
+          <div class="cur-value">
+            <select>
+              <option>ريال سعودي</option>
+              <option>دولار أمريكي</option>
+              <option>ريال يمني</option>
+            </select>
+          </div>
+        </div>
+        <div class="currency-swap" onclick="showToast(translations[currentLang].currencySwapped)">
+          <i class="fa-solid fa-right-left"></i>
+        </div>
+        <div class="currency-box">
+          <div class="cur-label">إلى</div>
+          <div class="cur-value">
+            <select>
+              <option>ريال يمني</option>
+              <option>دولار أمريكي</option>
+              <option>ريال سعودي</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- مبلغ العملية -->
+      <div class="exchange-amount-label">مبلغ العملية (ريال سعودي)</div>
+      <div style="padding:0 var(--spacing-md) var(--spacing-sm);">
+        <div class="input-wrapper">
+          <input type="number" class="form-input" placeholder="أدخل المبلغ" style="direction:ltr;" />
+        </div>
+      </div>
+
+      <!-- الرصيد -->
+      <div class="balance-row" style="padding:0 var(--spacing-md) var(--spacing-md);">
+        <i class="fa-solid fa-wallet balance-icon-sm"></i>
+        <span>رصيدي</span>
+        <span class="balance-val">****** ريال سعودي</span>
+        <i class="fa-solid fa-circle-check" style="color:var(--color-success);font-size:14px;"></i>
+      </div>
+
+      <!-- اختيار سعر الصرف -->
+      <div class="exchange-rate-title">اختر سعر الصرف</div>
+      <div class="exchange-rate-card">
+        <div class="rate-logo">
+          <span style="font-size:11px;color:var(--color-accent);font-weight:800;">W</span>
+        </div>
+        <div class="rate-info">
+          <div class="rate-name">Al-Najm</div>
+          <div class="rate-value">1 ريال سعودي = 139.50 ريال يمني</div>
+        </div>
+        <i class="fa-solid fa-circle-check rate-check"></i>
+      </div>
+
+      <div style="padding:0 var(--spacing-md) var(--spacing-lg);">
+        <button class="btn btn-disabled">
+          التالي <i class="fa-solid fa-arrow-left"></i>
+        </button>
+      </div>
+
+    </div><!-- /screen-content -->
+  </section><!-- /screen-exchange -->
+
+
+  <!-- ============================================================
+       شاشة 15 + 16: استلام / إلغاء حوالة (Receive & Cancel Transfer)
+       ============================================================ -->
+  <section id="screen-receive" class="screen">
+
+    <header class="app-header">
+      <div class="header-action" onclick="showScreen('screen-home')">
+        <i class="fa-solid fa-arrow-right"></i>
+      </div>
+      <div class="header-title">ون كاش</div>
+      <div class="header-action">
+        <i class="fa-solid fa-circle-question"></i>
+      </div>
+    </header>
+
+    <!-- التبويبات -->
+    <div data-tab-group="receive" class="tabs">
+      <div class="tab-item active" data-tab="receive" onclick="switchTab('receive','receive')">
+        استلام
+      </div>
+      <div class="tab-item" data-tab="cancel" onclick="switchTab('receive','cancel')">
+        إلغاء
+      </div>
+    </div>
+
+    <div class="screen-content">
+      <div class="form-screen-content">
+
+        <!-- محتوى تبويب الاستلام -->
+        <div data-tab-content="receive">
+
+          <!-- رقم الحوالة -->
+          <div class="form-group">
+            <label class="form-label">رقم الحوالة</label>
+            <div class="input-wrapper">
+              <input type="text" class="form-input active-input" placeholder="أدخل هنا" />
+            </div>
+          </div>
+
+          <!-- رقم العملية -->
+          <div class="form-group mb-lg">
+            <label class="form-label">رقم العملية</label>
+            <div class="input-wrapper">
+              <input type="text" class="form-input" placeholder="أدخل هنا" />
+            </div>
+          </div>
+
+          <button class="btn btn-disabled">
+            التالي <i class="fa-solid fa-arrow-left"></i>
+          </button>
+
+        </div><!-- /tab receive -->
+
+        <!-- محتوى تبويب الإلغاء -->
+        <div data-tab-content="cancel" style="display:none;">
+
+          <!-- رقم الحوالة -->
+          <div class="form-group">
+            <label class="form-label">رقم الحوالة</label>
+            <div class="input-wrapper">
+              <input type="text" class="form-input active-input" placeholder="أدخل هنا" />
+            </div>
+          </div>
+
+          <!-- رقم العملية -->
+          <div class="form-group">
+            <label class="form-label">رقم العملية</label>
+            <div class="input-wrapper">
+              <input type="text" class="form-input" placeholder="أدخل هنا" />
+            </div>
+          </div>
+
+          <!-- العملة -->
+          <div class="form-group">
+            <label class="form-label">العملة</label>
+            <div class="input-wrapper">
+              <select class="form-select">
+                <option>ر.ي</option>
+                <option>ر.س</option>
+                <option>USD</option>
+              </select>
+              <i class="fa-solid fa-chevron-down select-arrow"></i>
+            </div>
+          </div>
+
+          <!-- سبب الإلغاء -->
+          <div class="form-group mb-lg">
+            <label class="form-label">سبب الإلغاء</label>
+            <div class="input-wrapper">
+              <select class="form-select">
+                <option>بيانات المستلم غير صحيحة</option>
+                <option>خطأ في المبلغ</option>
+                <option>تغيير رأي</option>
+                <option>أسباب أخرى</option>
+              </select>
+              <i class="fa-solid fa-chevron-down select-arrow"></i>
+            </div>
+          </div>
+
+          <button class="btn btn-disabled">
+            التالي <i class="fa-solid fa-arrow-left"></i>
+          </button>
+
+        </div><!-- /tab cancel -->
+
+      </div><!-- /form-screen-content -->
+    </div><!-- /screen-content -->
+  </section><!-- /screen-receive -->
+
+
+  <!-- ============================================================
+       القائمة الجانبية (Drawer)
+       ============================================================ -->
+  <div id="drawer-overlay" class="overlay"></div>
+  <div id="drawer" class="drawer">
+
+    <!-- رأس القائمة -->
+    <div class="drawer-header">
+      <div class="drawer-close" onclick="closeDrawer()">
+        <i class="fa-solid fa-xmark"></i>
+      </div>
+      <div class="drawer-avatar">
+        <i class="fa-solid fa-user"></i>
+      </div>
+      <div class="drawer-name">مصطفى ضبعان</div>
+      <div class="drawer-phone">777785026</div>
+      <div class="drawer-badge">
+        <i class="fa-solid fa-circle-check"></i>
+        حساب مفعّل
+      </div>
+      <div class="drawer-alt-account">
+        <div class="alt-label">رقم الحساب البديل</div>
+        <div class="alt-number">
+          192967789
+          <i class="fa-solid fa-copy" style="cursor:pointer;" onclick="copyToClipboard('192967789')"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- قائمة العناصر -->
+    <div class="drawer-menu">
+      <div class="drawer-menu-item" onclick="closeDrawer(); showScreen('screen-account');">
+        <div class="menu-icon"><i class="fa-solid fa-user"></i></div>
+        <div class="menu-text">بيانات الحساب</div>
+        <i class="fa-solid fa-chevron-left menu-arrow"></i>
+      </div>
+      <div class="drawer-menu-item" onclick="closeDrawer(); showScreen('screen-security');">
+        <div class="menu-icon"><i class="fa-solid fa-shield-halved"></i></div>
+        <div class="menu-text">الحماية</div>
+        <i class="fa-solid fa-chevron-left menu-arrow"></i>
+      </div>
+      <div class="drawer-menu-item" onclick="closeDrawer(); showScreen('screen-privacy');">
+        <div class="menu-icon"><i class="fa-solid fa-lock"></i></div>
+        <div class="menu-text">الخصوصية</div>
+        <i class="fa-solid fa-chevron-left menu-arrow"></i>
+      </div>
+      <div class="drawer-menu-item" onclick="closeDrawer(); showScreen('screen-invite');">
+        <div class="menu-icon"><i class="fa-solid fa-user-plus"></i></div>
+        <div class="menu-text">دعوة صديق</div>
+        <i class="fa-solid fa-chevron-left menu-arrow"></i>
+      </div>
+      <div class="drawer-menu-item" onclick="closeDrawer(); showScreen('screen-limits');">
+        <div class="menu-icon"><i class="fa-solid fa-gauge-high"></i></div>
+        <div class="menu-text">عرض السقوف</div>
+        <i class="fa-solid fa-chevron-left menu-arrow"></i>
+      </div>
+      <div class="drawer-menu-item">
+        <div class="menu-icon"><i class="fa-solid fa-file-contract"></i></div>
+        <div class="menu-text">الأحكام والشروط</div>
+        <i class="fa-solid fa-chevron-left menu-arrow"></i>
+      </div>
+      <div class="drawer-menu-item">
+        <div class="menu-icon"><i class="fa-solid fa-location-dot"></i></div>
+        <div class="menu-text">أماكننا</div>
+        <i class="fa-solid fa-chevron-left menu-arrow"></i>
+      </div>
+      <div class="drawer-menu-item">
+        <div class="menu-icon"><i class="fa-solid fa-phone"></i></div>
+        <div class="menu-text">تواصل معنا</div>
+        <i class="fa-solid fa-chevron-left menu-arrow"></i>
+      </div>
+    </div>
+
+    <!-- أسفل القائمة -->
+    <div class="drawer-footer">
+      <button class="drawer-lang-btn" id="lang-toggle-btn" onclick="toggleLanguage()">
+        <i class="fa-solid fa-globe"></i>
+        <span data-i18n="langBtn">English</span>
+      </button>
+      <button class="btn btn-logout" onclick="showScreen('screen-login'); closeDrawer();">
+        <i class="fa-solid fa-right-from-bracket"></i>
+        <span data-i18n="logout">خروج</span>
+      </button>
+      <div class="app-version" data-i18n="version">الإصدار 1.0.0</div>
+    </div>
+
+  </div><!-- /drawer -->
+
+
+  <!-- ============================================================
+       Bottom Sheet: تحويل أموال - الخيارات
+       ============================================================ -->
+  <div id="sheet-overlay" class="overlay"></div>
+  <div id="transfer-sheet" class="bottom-sheet">
+    <div class="sheet-handle"></div>
+    <div class="sheet-icon-top">
+      <i class="fa-solid fa-wallet"></i>
+    </div>
+    <div class="sheet-title">تحويل أموال إلى</div>
+
+    <div class="sheet-option" onclick="closeTransferSheet(); showScreen('screen-transfer');">
+      <div class="option-icon">
+        <i class="fa-solid fa-user-check"></i>
+      </div>
+      <div class="option-text">عميل ون كاش</div>
+      <i class="fa-solid fa-chevron-left option-arrow"></i>
+    </div>
+
+    <div class="sheet-option">
+      <div class="option-icon">
+        <i class="fa-solid fa-network-wired"></i>
+      </div>
+      <div class="option-text">شبكات محلية</div>
+      <i class="fa-solid fa-chevron-left option-arrow"></i>
+    </div>
+
+    <div class="sheet-option">
+      <div class="option-icon">
+        <i class="fa-solid fa-users"></i>
+      </div>
+      <div class="option-text">لغير العملاء</div>
+      <i class="fa-solid fa-chevron-left option-arrow"></i>
+    </div>
+
+    <div class="sheet-option" onclick="closeTransferSheet(); showScreen('screen-exchange');">
+      <div class="option-icon">
+        <i class="fa-solid fa-right-left"></i>
+      </div>
+      <div class="option-text">مصارفة</div>
+      <i class="fa-solid fa-chevron-left option-arrow"></i>
+    </div>
+
+  </div><!-- /transfer-sheet -->
+
+
+  <!-- ============================================================
+       شريط التنقل التجريبي (للعرض فقط)
+       ============================================================ -->
+  <nav class="demo-nav">
+    <button data-screen="screen-login"          onclick="showScreen('screen-login')">تسجيل الدخول</button>
+    <button data-screen="screen-register"       onclick="showScreen('screen-register')">إنشاء حساب</button>
+    <button data-screen="screen-activation"     onclick="showScreen('screen-activation')">تفعيل</button>
+    <button data-screen="screen-home"           onclick="showScreen('screen-home')">الرئيسية</button>
+    <button                                      onclick="showScreen('screen-home'); setTimeout(openDrawer,100)">القائمة</button>
+    <button data-screen="screen-account"        onclick="showScreen('screen-account')">بيانات</button>
+    <button data-screen="screen-security"       onclick="showScreen('screen-security')">حماية</button>
+    <button data-screen="screen-privacy"        onclick="showScreen('screen-privacy')">خصوصية</button>
+    <button data-screen="screen-delete-account" onclick="showScreen('screen-delete-account')">حذف</button>
+    <button data-screen="screen-invite"         onclick="showScreen('screen-invite')">دعوة</button>
+    <button data-screen="screen-limits"         onclick="showScreen('screen-limits')">السقوف</button>
+    <button                                      onclick="showScreen('screen-home'); setTimeout(openTransferSheet,100)">تحويل↓</button>
+    <button data-screen="screen-transfer"       onclick="showScreen('screen-transfer')">تحويل</button>
+    <button data-screen="screen-exchange"       onclick="showScreen('screen-exchange')">مصارفة</button>
+    <button data-screen="screen-receive"        onclick="showScreen('screen-receive')">استلام</button>
+  </nav>
+
+</div><!-- /app -->
+
+<!-- JavaScript -->
+<script src="js/app.js"></script>
+</body>
+</html>
